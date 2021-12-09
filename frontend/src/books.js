@@ -1,5 +1,6 @@
 const books = [
   {
+    "id":1,
     "author": "Chinua Achebe",
     "country": "Nigeria",
     "imageLink": "images/things-fall-apart.jpg",
@@ -10,6 +11,7 @@ const books = [
     "year": 1958
   },
   {
+    "id":2,
     "author": "Hans Christian Andersen",
     "country": "Denmark",
     "imageLink": "images/fairy-tales.jpg",
@@ -20,6 +22,7 @@ const books = [
     "year": 1836
   },
   {
+    "id":3,
     "author": "Dante Alighieri",
     "country": "Italy",
     "imageLink": "images/the-divine-comedy.jpg",
@@ -30,6 +33,7 @@ const books = [
     "year": 1315
   },
   {
+    "id":4,
     "author": "Unknown",
     "country": "Sumer and Akkadian Empire",
     "imageLink": "images/the-epic-of-gilgamesh.jpg",
@@ -40,6 +44,7 @@ const books = [
     "year": -1700
   },
   {
+    "id":5,
     "author": "Unknown",
     "country": "Achaemenid Empire",
     "imageLink": "images/the-book-of-job.jpg",
@@ -50,6 +55,7 @@ const books = [
     "year": -600
   },
   {
+    "id":6,
     "author": "Unknown",
     "country": "India/Iran/Iraq/Egypt/Tajikistan",
     "imageLink": "images/one-thousand-and-one-nights.jpg",
@@ -60,6 +66,7 @@ const books = [
     "year": 1200
   },
   {
+    "id":7,
     "author": "Unknown",
     "country": "Iceland",
     "imageLink": "images/njals-saga.jpg",
@@ -70,6 +77,7 @@ const books = [
     "year": 1350
   },
   {
+    "id":8,
     "author": "Jane Austen",
     "country": "United Kingdom",
     "imageLink": "images/pride-and-prejudice.jpg",
@@ -80,6 +88,7 @@ const books = [
     "year": 1813
   },
   {
+    "id":9,
     "author": "Honor\u00e9 de Balzac",
     "country": "France",
     "imageLink": "images/le-pere-goriot.jpg",
@@ -90,6 +99,7 @@ const books = [
     "year": 1835
   },
   {
+    "id":10,
     "author": "Samuel Beckett",
     "country": "Republic of Ireland",
     "imageLink": "images/molloy-malone-dies-the-unnamable.jpg",
@@ -100,6 +110,7 @@ const books = [
     "year": 1952
   },
   {
+    "id":11,
     "author": "Giovanni Boccaccio",
     "country": "Italy",
     "imageLink": "images/the-decameron.jpg",
@@ -110,6 +121,7 @@ const books = [
     "year": 1351
   },
   {
+    "id":12,
     "author": "Jorge Luis Borges",
     "country": "Argentina",
     "imageLink": "images/ficciones.jpg",
@@ -120,6 +132,7 @@ const books = [
     "year": 1965
   },
   {
+    "id":13,
     "author": "Emily Bront\u00eb",
     "country": "United Kingdom",
     "imageLink": "images/wuthering-heights.jpg",
