@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 const Footer = () => {
   return (
     <footer>
-      <Container absolute>
+      <Container>
         <Row>
           <Col className='text-center py-3'>
             Copyright &copy; Book Finder

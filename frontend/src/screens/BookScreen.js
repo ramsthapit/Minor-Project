@@ -1,17 +1,41 @@
 import React from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { Button, Col, Image, ListGroup, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import books from '../books'
 
-const BookScreen = () => {
+const BookScreen = ({ match }) => {
+  const book = books.find((p) => p.id == match.params.id)
+  console.log(book);
   return (
     <>
-      <h1>Latest Books</h1> 
+      <Link className='btn btn-light my-3' to='/'>Go Back</Link>
       <Row>
-        {books.map(book => (
-          <Col sm={12} md={6} lg={4} xl={3}>
-            
-          </Col>
-        ))}
+        <Col md={6} >
+          <Image src={book.imageLink} alt={book.title} fluid/>
+        </Col>
+        <Col md={6}>
+          <ListGroup varient='flush'>
+            <ListGroup.Item>
+              <h1>{book.title}</h1>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              Author: {book.author}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              Country: {book.country}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              Language: {book.language}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              Year: {book.year}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              Pages: {book.pages}
+            </ListGroup.Item>
+            <Button variant="warning" size='lg' >BUY</Button>
+          </ListGroup>
+        </Col>
       </Row>
     </>
   )
