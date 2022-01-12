@@ -20,7 +20,7 @@ const BookScreen = ({ match }) => {
       <Link className='btn btn-light my-3' to='/'>Go Back</Link>
       <Row>
         <Col md={6} >
-          <Image src={book.imageLink} alt={book.title} fluid/>
+          <Image src={book.image} alt={book.title} fluid/>
         </Col>
         <Col md={6}>
           <ListGroup varient='flush'>
