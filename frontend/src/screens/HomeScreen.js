@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Col,Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import Book from '../components/Book'
 
 const HomeScreen = () => {
@@ -12,13 +12,12 @@ const HomeScreen = () => {
     }
     fetchBooks()
   }, [])
+  const Books = Object.values(books);
   return (
     <>
       <h1>Latest Books</h1> 
       <Row>
-        {console.log(books)}
-        <h1>{books.author}</h1>
-        {books.map((book) => (
+        {Books.map(book => (
           <Col key={book._id} sm={12} md={6} lg={4} xl={3}>
             <Book book={book} />
           </Col>
