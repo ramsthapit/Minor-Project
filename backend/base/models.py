@@ -15,7 +15,7 @@ class Book(models.Model):
   user=models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
   author=models.CharField(max_length=200, null=True, blank=True) 
   country=models.CharField(max_length=200, null=True, blank=True)
-  # image=
+  image= models.ImageField(null=True, blank=True)
   category=models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
   description = models.TextField(null=True, blank=True)
   rating = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
