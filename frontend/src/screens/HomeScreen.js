@@ -3,6 +3,8 @@ import React, { useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Book from '../components/Book'
 import { listBooks } from '../actions/bookActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -17,7 +19,7 @@ const HomeScreen = () => {
   return (
     <>
       <h1>Latest Books</h1> 
-      {loading ? <h1>Loading...</h1> : error ? <h3>{error} </h3> :
+      {loading ? <Loader /> : error ? <Message variant='danger'>{error} </Message> :
       
         <Row>
           {books.map(book => (
