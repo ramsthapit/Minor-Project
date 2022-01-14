@@ -18,8 +18,8 @@ const Header = () => {
                 <Nav.Link><i className='fas fa-home'></i>Home</Nav.Link>
               </LinkContainer>
               
-              <LinkContainer to='/freeEbook'>
-                <Nav.Link><i className='fas fa-book'></i>Free Ebook</Nav.Link>
+              <LinkContainer to='/cart'>
+                <Nav.Link><i className='fas fa-book'></i>Wish List</Nav.Link>
               </LinkContainer>
               
               <NavDropdown title="Search" id="basic-nav-dropdown">

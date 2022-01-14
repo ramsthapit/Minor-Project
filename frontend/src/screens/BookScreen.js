@@ -7,7 +7,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 
 
-const BookScreen = ({ match }) => {
+const BookScreen = ({ match, history }) => {
   const dispatch = useDispatch()
 
   const bookDetails = useSelector(state=>state.bookDetails)
@@ -17,6 +17,9 @@ const BookScreen = ({ match }) => {
     dispatch(listBookDetails(match.params.id))
   }, [dispatch, match])
   
+  const addToWishlistHandler = () => {
+    history.push(`/cart/${match.params.id}`)
+  }
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>Go Back</Link>
@@ -52,7 +55,13 @@ const BookScreen = ({ match }) => {
           </Col>
           <Col md={3}>
             <ListGroup variant='flush'>
-              <Button className='btn-block' variant="light" type ='button'>Add to Wishlist</Button>
+              <Button
+                onClick={addToWishlistHandler}
+                className='btn-block'
+                variant="light"
+                type='button'>
+                Add to Wishlist
+              </Button>
               <Button variant="warning" className='btn-block'>BUY</Button>
             </ListGroup>
           </Col>
