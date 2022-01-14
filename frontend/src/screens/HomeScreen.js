@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect } from 'react'
-import { Col, Row } from 'react-bootstrap'
-import Book from '../components/Book'
+import { Card, Col, Row } from 'react-bootstrap'
+// import Book from '../components/Book'
 import { listBooks } from '../actions/bookActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import { Link } from 'react-router-dom'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -24,7 +25,11 @@ const HomeScreen = () => {
         <Row>
           {books.map(book => (
             <Col key={book._id} sm={12} md={6} lg={4} xl={3}>
-              <Book book={book} />
+              <Card className='my-3 rounded'>
+                <Link to={`/book/${book._id}`}>
+                <Card.Img src={book.image} varient='top' />
+                </Link>
+              </Card>
             </Col>
           ))}
         </Row>

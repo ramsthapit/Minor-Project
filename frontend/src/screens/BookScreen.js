@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Col, Image, ListGroup, Row } from 'react-bootstrap'
+import { Button, Col, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
 import { listBookDetails } from '../actions/bookActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -22,7 +22,7 @@ const BookScreen = ({ match }) => {
       <Link className='btn btn-light my-3' to='/'>Go Back</Link>
       {loading ? <Loader /> : error ? <Message variant='danger'>{error} </Message> :
         <Row>
-          <Col md={6} >
+          <Col md={3} >
             <Image src={book.image} alt={book.title} fluid/>
           </Col>
           <Col md={6}>
@@ -43,12 +43,17 @@ const BookScreen = ({ match }) => {
                 Year: {book.year}
               </ListGroup.Item>
               <ListGroup.Item>
-                Pages: {book.pages}
+                Pages: {book.page}
               </ListGroup.Item>
-              <ListGroup.Item>
-                <Button className='btn-block' variant="light" type ='button'>Add to Wishlist</Button>
-              </ListGroup.Item>
-              <Button variant="warning" size="lg">BUY</Button>
+              <ListGroupItem>
+                Description:<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+              </ListGroupItem>
+            </ListGroup>
+          </Col>
+          <Col md={3}>
+            <ListGroup variant='flush'>
+              <Button className='btn-block' variant="light" type ='button'>Add to Wishlist</Button>
+              <Button variant="warning" className='btn-block'>BUY</Button>
             </ListGroup>
           </Col>
         </Row>
