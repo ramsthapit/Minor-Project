@@ -46,7 +46,6 @@ const Header = () => {
                 <Nav.Link><i className='fas fa-user'></i> Sign In</Nav.Link>
               </LinkContainer>
               
-              <Button variant="success" size='lg' >Donate</Button>
             </Nav>
           </Navbar.Collapse>
         </Container>

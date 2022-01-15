@@ -28,7 +28,7 @@ const CartScreen = ({match}) => {
   return (
     <Row>
       <Col md={8}>
-        <h1>Wishlist</h1>
+        <h1>Wish List</h1>
         {cartItems.length === 0 ? (
           <Message variant='info'>
             Your Wish list is empty <Link to='/'>Go Back</Link>
