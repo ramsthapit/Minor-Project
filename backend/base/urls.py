@@ -6,6 +6,7 @@ urlpatterns = [
         name='token_obtain_pair'),
     path('', views.getRoutes,name="routes"),
     path('users/profile/', views.getUserProfile, name="user-profile"),
+    path('users/', views.getUsers, name="user"),
     path('books/', views.getBooks,name="books"),
     path('book/<str:pk>/', views.getBook,name="book"),
 ] 
