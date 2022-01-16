@@ -26,7 +26,7 @@ export const listBookDetails = (id) => async(dispatch) => {
   try
   {
     dispatch({ type: BOOK_DETAILS_REQUEST })
-    const { data } = await axios.get(`/api/book/${id}`)
+    const { data } = await axios.get(`/api/books/${id}`)
     dispatch({
       type: BOOK_DETAILS_SUCCESS,
       payload: data
