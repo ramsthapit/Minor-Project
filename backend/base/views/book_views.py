@@ -17,6 +17,18 @@ def getBooks(request):
 
 @api_view(['GET'])
 def getBook(request,pk):
-  book= Book.objects.get(_id=pk)
+  book = Book.objects.get(_id=pk)
   serializer = BookSerializer(book, many=False)
   return Response(serializer.data)
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteBook(request, pk):
+  book = Book.objects.get(_id=pk)
+  book.delete() 
+  return Response('Book deleted')
+
+# @api_view(['PUT'])
+# @permission_classes([IsAdminUser])
+# def updateBook(request):
+#   data = request.data 
