@@ -28,7 +28,40 @@ def deleteBook(request, pk):
   book.delete() 
   return Response('Book deleted')
 
-# @api_view(['PUT'])
-# @permission_classes([IsAdminUser])
-# def updateBook(request):
-#   data = request.data 
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def createBook(request):
+  user = request.user
+  book = Book.objects.create(
+    user=user,
+    author='sample name',
+    country='country',
+    description='',
+    language='english',
+    link='',
+    # page=0,
+    title='title name',
+    # year='',
+    category=0,
+  )
+  serializer = BookSerializer(book, many=False)
+  return Response(serializer.data)
+
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateBook(request, pk):
+  data = request.data
+  book = Book.objects.get(_id=pk)
+  book.author = data['author'],
+  book.country = data['country'],
+  book.description = data['description'],
+  book.language = data['language'],
+  book.link = data['link'],
+  # book.page = data['page'],
+  book.title = data['title'],
+  # book.year = data['year'],
+  
+  book.save()
+ 
+  serilizer = BookSerializer(book, many=False)
+  return Response(serilizer.data)
