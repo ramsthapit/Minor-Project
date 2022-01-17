@@ -1,13 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { bookDetailsReducer, bookListReducer } from './reducers/bookReducers'
+import { bookDetailsReducer, bookListReducer, bookReviewCreateReducer } from './reducers/bookReducers'
 import { cartReducer } from './reducers/cartReducer'
 
 const reducer = combineReducers({
   bookList: bookListReducer,
   bookDetails: bookDetailsReducer,
-  cart: cartReducer
+  bookReviewCreate: bookReviewCreateReducer,
+  cart: cartReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ?
