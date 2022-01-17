@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Col, Form, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
-import { createProductReview, listBookDetails } from '../actions/bookActions'
+import { createBookReview, listBookDetails } from '../actions/bookActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { BOOK_CREATE_REVIEW_RESET } from '../constants/bookContants'
@@ -18,26 +18,26 @@ const BookScreen = ({ match, history }) => {
   const bookDetails = useSelector(state=>state.bookDetails)
   const { loading, error, book } = bookDetails 
   
-  // const userLogin = useSelector(state=>state.userLogin)
-  // const { userInfo } = userLogin 
+  const userLogin = useSelector(state=>state.userLogin)
+  const { userInfo } = userLogin 
   
   const bookReviewCreate = useSelector(state=>state.bookReviewCreate)
   const {
-    loading: loadingProductReview,
-    error: errorProductReview,
-    success: successProductReview,
+    loading: loadingBookReview,
+    error: errorBookReview,
+    success: successBookReview,
   } = bookReviewCreate 
 
   useEffect(() => {
 
-    if (successProductReview)
+    if (successBookReview)
     {
       setRating(0)
       setComment('')
       dispatch({type:BOOK_CREATE_REVIEW_RESET})
     }
     dispatch(listBookDetails(match.params.id))
-  }, [dispatch, match, successProductReview])
+  }, [dispatch, match, successBookReview])
   
   const addToWishlistHandler = () => {
     history.push(`/cart/${match.params.id}`)
@@ -45,7 +45,7 @@ const BookScreen = ({ match, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(createProductReview(
+    dispatch(createBookReview(
       match.params.id, {
         rating,
         comment
@@ -118,50 +118,48 @@ const BookScreen = ({ match, history }) => {
               <ListGroup>
                 <ListGroupItem>
                   <h4>Write a review</h4>
-                  {loadingProductReview && <Loader />}
-                  {successProductReview && <Message variant='success'>Review Submited</Message>}
-                  {errorProductReview && <Message variant='danger'>{errorProductReview}</Message>}
-                  <Form onSubmit={submitHandler}>
-                    <Form.Group>
-                      <Form.Label>Rating</Form.Label><br/>
-                      <select
-                        as='select'
-                        value={rating}
-                        onChange={(e)=> setRating(e.target.value)}
-                      >
-                        <option value=''>Select...</option>
-                        <option value='1' color='black'>1 - Poor</option>
-                        <option value='2'>2 - Fair</option>
-                        <option value='3'>3 - Good</option>
-                        <option value='4'>4 - Very Good</option>
-                        <option value='5'>5 - Excellent</option>
-                      </select>
-                    </Form.Group>
-                    <Form.Group>
-                      <Form.Label>Comment</Form.Label>
-                      <Form.Control
-                        as='textarea'
-                        row='5'
-                        value={comment}
-                        onChange={(e)=> setComment(e.target.value)}
-                      >
-                      </Form.Control>
-                    </Form.Group>
-                    <Button
-                      disabled={loadingProductReview}
-                      type='submit'
-                      variant='primary'
-                    >
-                      SUBMIT
-                    </Button>
-                  </Form>
-                  {/* {userInfo ? (
+                  {loadingBookReview && <Loader />}
+                  {successBookReview && <Message variant='success'>Review Submited</Message>}
+                  {errorBookReview && <Message variant='danger'>{errorBookReview}</Message>}
+                  
+                  {userInfo ? (
                     <Form onSubmit={submitHandler}>
-                      
+                      <Form.Group>
+                        <Form.Label>Rating</Form.Label><br/>
+                        <select
+                          as='select'
+                          value={rating}
+                          onChange={(e)=> setRating(e.target.value)}
+                        >
+                          <option value=''>Select...</option>
+                          <option value='1' color='black'>1 - Poor</option>
+                          <option value='2'>2 - Fair</option>
+                          <option value='3'>3 - Good</option>
+                          <option value='4'>4 - Very Good</option>
+                          <option value='5'>5 - Excellent</option>
+                        </select>
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Comment</Form.Label>
+                        <Form.Control
+                          as='textarea'
+                          row='5'
+                          value={comment}
+                          onChange={(e)=> setComment(e.target.value)}
+                        >
+                        </Form.Control>
+                      </Form.Group>
+                      <Button
+                        disabled={loadingBookReview}
+                        type='submit'
+                        variant='primary'
+                      >
+                        SUBMIT
+                      </Button>
                     </Form>
                   ) : (
                      <Message variant='info'>Please <Link to='/login'>Login</Link> </Message> 
-                  )} */}
+                  )}
                 </ListGroupItem>
               </ListGroup>
             </Col>

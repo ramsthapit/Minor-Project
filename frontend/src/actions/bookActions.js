@@ -43,7 +43,7 @@ export const listBookDetails = (id) => async(dispatch) => {
   }
 }
 
-export const createProductReview = (productId, review) => async(dispatch, getState) => {
+export const createBookReview = (bookId, review) => async(dispatch, getState) => {
   try
   {
     dispatch({ type: BOOK_CREATE_REVIEW_REQUEST })
@@ -60,7 +60,7 @@ export const createProductReview = (productId, review) => async(dispatch, getSta
     }
 
     const { data } = await axios.post(
-      `/api/books/${productId}/reviews/`,
+      `/api/books/${bookId}/reviews/`,
       review,
       config
     )
