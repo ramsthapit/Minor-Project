@@ -126,18 +126,18 @@ const BookScreen = ({ match, history }) => {
                     <Form onSubmit={submitHandler}>
                       <Form.Group>
                         <Form.Label>Rating</Form.Label><br/>
-                        <select
+                        <Form.Control
                           as='select'
                           value={rating}
                           onChange={(e)=> setRating(e.target.value)}
                         >
-                          <option value=''>Select...</option>
-                          <option value='1' color='black'>1 - Poor</option>
-                          <option value='2'>2 - Fair</option>
-                          <option value='3'>3 - Good</option>
-                          <option value='4'>4 - Very Good</option>
-                          <option value='5'>5 - Excellent</option>
-                        </select>
+                          <option value='' id='option'>Select...</option>
+                          <option value='1' id='option'>1 - Poor</option>
+                          <option value='2' id='option'>2 - Fair</option>
+                          <option value='3' id='option'>3 - Good</option>
+                          <option value='4' id='option'>4 - Very Good</option>
+                          <option value='5' id='option'>5 - Excellent</option>
+                        </Form.Control>
                       </Form.Group>
                       <Form.Group>
                         <Form.Label>Comment</Form.Label>
