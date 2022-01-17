@@ -1,8 +1,19 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { logout } from '../actions/userActions'
 
 const Header = () => {
+
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+
+  const dispatch = useDispatch()
+
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
   return (
     <header>
       <Navbar bg="light" expand="lg" collapseOnSelect>
@@ -22,30 +33,19 @@ const Header = () => {
                 <Nav.Link><i className='fas fa-book'></i>Wish List</Nav.Link>
               </LinkContainer>
               
-              <NavDropdown title="Search" id="basic-nav-dropdown">
-                
-                <LinkContainer to='/'>
-                  <NavDropdown.Item>Book Search</NavDropdown.Item>
+              {userInfo ? (
+                <NavDropdown title={userInfo.name} id='username'>
+                  <LinkContainer to='/profile'>
+                    <NavDropdown.Item id='dropdown'>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler} id='dropdown'>Logout</NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <LinkContainer to='/login'>
+                  <Nav.Link><i className='fas fa-user'></i> Sign In</Nav.Link>
                 </LinkContainer>
+              )}
                 
-                <LinkContainer to='/'>
-                  <NavDropdown.Item>Frequrntly Downloaded</NavDropdown.Item>
-                </LinkContainer>
-                
-                <LinkContainer to='/'>
-                  <NavDropdown.Item>Book Shelves</NavDropdown.Item>
-                </LinkContainer>
-                
-                <NavDropdown.Divider />
-                <LinkContainer to='/'>
-                  <NavDropdown.Item>Offline catelog</NavDropdown.Item>
-                </LinkContainer>
-                
-              </NavDropdown>
-              <LinkContainer to='/login"'>
-                <Nav.Link><i className='fas fa-user'></i> Sign In</Nav.Link>
-              </LinkContainer>
-              
             </Nav>
           </Navbar.Collapse>
         </Container>
