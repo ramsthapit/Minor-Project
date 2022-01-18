@@ -12,7 +12,12 @@ from base.serializers import BookSerializer
 
 @api_view(['GET'])
 def getBooks(request):
-  books = Book.objects.all()
+  query = request.query_params.get('keyword')
+
+  if query == None:
+    query = ''
+
+  books = Book.objects.filter(title__icontains=query)
   serializer = BookSerializer(books, many=True)
   return Response(serializer.data)
 
