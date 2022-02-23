@@ -20,7 +20,7 @@ const Header = () => {
       <Navbar bg="light" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>Book Finder</Navbar.Brand>
+            <Navbar.Brand><img src={process.env.PUBLIC_URL + "/images/kitaab-logo.jpg"} alt='logo' /><b>KITAAB</b></Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
