@@ -92,11 +92,11 @@ const BookScreen = ({ match, history }) => {
                 <Button
                   onClick={addToWishlistHandler}
                   className='btn-block'
-                  variant="light"
+                  variant="warning"
                   type='button'>
                   Add to Wishlist
                 </Button>
-                <Button variant="warning" className='btn-block'>BUY</Button>
+                {/* <Button variant="warning" className='btn-block'>BUY</Button> */}
               </ListGroup>
             </Col>
           </Row>

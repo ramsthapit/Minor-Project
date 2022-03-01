@@ -30,7 +30,7 @@ const SearchBox = () => {
         ></Form.Control>
         <Button
           type='submit'
-          variant='outline-danger'
+          variant='outline-primary'
         >
           <i className='fas fa-search' />
         </Button>
