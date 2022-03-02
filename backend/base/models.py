@@ -12,21 +12,24 @@ class Category(models.Model):
     return self.name
 
 class Book(models.Model):
-  user=models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-  author=models.CharField(max_length=200, null=True, blank=True) 
-  country=models.CharField(max_length=200, null=True, blank=True)
-  image= models.ImageField(null=True, blank=True)
-  category=models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-  description = models.TextField(null=True, blank=True)
-  rating = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-  numReviews = models.IntegerField(null=True, blank=True, default=0)
-  language=models.CharField(max_length=200, null=True, blank=True)
-  link=models.URLField(unique=True,null=True, blank=True)
-  page=models.PositiveIntegerField()
+  # user=models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+  _id=models.IntegerField(primary_key=True, editable=False)
   title=models.CharField(max_length=200, null=True, blank=True)
-  year=models.DateField(blank=True)
-  createdAt= models.DateTimeField(auto_now_add=True)
-  _id=models.AutoField(primary_key=True, editable=False)
+  series = models.CharField(max_length=255, null=True, blank=True)
+  author=models.CharField(max_length=200, null=True, blank=True) 
+  rating = models.FloatField(null=True, blank=True)
+  description = models.TextField(null=True, blank=True)
+  language=models.CharField(max_length=200, null=True, blank=True)
+  isbn = models.CharField(max_length=255, null=True, blank=True)
+  genres = models.TextField(null=True, blank=True)
+  characters = models.TextField(null=True, blank=True)
+  bookForm = models.CharField(max_length=255, null=True, blank=True)
+  pages = models.IntegerField(null=True, blank=True)
+  publisher = models.CharField(max_length=255, null=True, blank=True)
+  publishDate = models.DateField(null=True, blank=True)
+  numRatings = models.BigIntegerField(null=True, blank=True)
+  coverImg = models.URLField(max_length=200, null=True, blank=True)
+  price = models.DecimalField(max_digits=1000, decimal_places=2, null=True, blank=True)
 
 
   def __str__(self):

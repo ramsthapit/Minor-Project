@@ -21,7 +21,7 @@ def getBooks(request):
   books = Book.objects.filter(title__icontains=query)
 
   page = request.query_params.get('page')
-  paginator = Paginator(books,4)
+  paginator = Paginator(books,12)
 
   try:
     books = paginator.page(page)
@@ -57,15 +57,23 @@ def createBook(request):
   user = request.user
   book = Book.objects.create(
     user=user,
-    author='sample name',
-    country='country',
-    description='',
-    language='english',
-    link='',
-    # page=0,
-    title='title name',
-    # year='',
     category=0,
+    author = 'sample name',
+    title = 'title',
+    series = 'series',
+    rating = 'rating',
+    description = 'description',
+    language = 'english',
+    isbn = 'isbn',
+    genres = 'genres',
+    characters = 'characters',
+    bookForm = 'bookForm',
+    pages = 'pages',
+    publisher = 'publisher',
+    publishDate = 'publishDate',
+    numRatings = 'numRatings',
+    coverImg = 'coverImg',
+    price = 'price',
   )
   serializer = BookSerializer(book, many=False)
   return Response(serializer.data)
@@ -76,13 +84,22 @@ def updateBook(request, pk):
   data = request.data
   book = Book.objects.get(_id=pk)
   book.author = data['author'],
-  book.country = data['country'],
+  book.title = data['title'],
+  book.series = data['series'],
+  book.author = data['author'],
+  book.rating = data['rating'],
   book.description = data['description'],
   book.language = data['language'],
-  book.link = data['link'],
-  # book.page = data['page'],
-  book.title = data['title'],
-  # book.year = data['year'],
+  book.isbn = data['isbn'],
+  book.genres = data['genres'],
+  book.characters = data['characters'],
+  book.bookForm = data['bookForm'],
+  book.pages = data['pages'],
+  book.publisher = data['publisher'],
+  book.publishDate = data['publishDate'],
+  book.numRatings = data['numRatings'],
+  book.coverImg = data['coverImg'],
+  book.price = data['price'],
   
   book.save()
  
@@ -128,3 +145,26 @@ def createBookReview(request, pk):
     book.save()
 
     return Response('Review Added')
+
+
+import pickle
+import pandas as pd
+import numpy as np
+
+
+similarity = pickle.load(open('similarity.pkl', 'rb'))
+
+@api_view(['GET'])
+def recommend(request, pk):
+    book = Book.objects.get(_id=pk)
+    distances = similarity[book._id-1]
+    book_list = sorted(
+        list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
+    bookList=Book.objects.none()
+    for i in book_list:
+        books = Book.objects.filter(_id=(i[0]+1))
+        print(books)
+        bookList |=books
+
+    serializer = BookSerializer(bookList, many=True)
+    return Response(serializer.data)

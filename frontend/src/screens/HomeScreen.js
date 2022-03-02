@@ -28,7 +28,7 @@ const HomeScreen = ({history}) => {
               <Col key={book._id} sm={12} md={6} lg={4} xl={3}>
                 <Card className='my-3 rounded'>
                   <Link to={`/book/${book._id}`}>
-                  <Card.Img src={book.image} varient='top' />
+                  <Card.Img src={book.coverImg} varient='top' />
                   </Link>
                 </Card>
               </Col>

@@ -9,10 +9,10 @@ export const addToCart = (id) => async(dispatch, getState) => {
     payload: {
       book: data._id,
       title: data.title,
-      image: data.image,
+      coverImg: data.coverImg,
       author: data.author,
       country: data.country,
-      year: data.year,
+      year: data.publishDate,
     }
   })
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))

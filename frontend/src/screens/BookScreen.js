@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Col, Form, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
-import { createBookReview, listBookDetails } from '../actions/bookActions'
+import { Button, Card, Col, Form, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
+import { createBookReview, listBookDetails, listBookRecommend } from '../actions/bookActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { BOOK_CREATE_REVIEW_RESET } from '../constants/bookContants'
@@ -28,6 +28,9 @@ const BookScreen = ({ match, history }) => {
     success: successBookReview,
   } = bookReviewCreate 
 
+  const bookRecommend = useSelector(state=>state.bookRecommend)
+  const { loading:loadingRecommend, error:errorRecommend, books } = bookRecommend 
+
   useEffect(() => {
 
     if (successBookReview)
@@ -37,6 +40,7 @@ const BookScreen = ({ match, history }) => {
       dispatch({type:BOOK_CREATE_REVIEW_RESET})
     }
     dispatch(listBookDetails(match.params.id))
+    dispatch(listBookRecommend(match.params.id))
   }, [dispatch, match, successBookReview])
   
   const addToWishlistHandler = () => {
@@ -60,30 +64,45 @@ const BookScreen = ({ match, history }) => {
         <div>
           <Row>
             <Col md={3} >
-              <Image src={book.image} alt={book.title} fluid/>
+              <Image src={book.coverImg} alt={book.title} fluid/>
             </Col>
             <Col md={6}>
               <ListGroup varient='flush'>
-                <ListGroup.Item>
+              <ListGroup.Item>
                   <h1>{book.title}</h1>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   Author: {book.author}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Country: {book.country}
+                  isbn: {book.isbn}
                 </ListGroup.Item>
+                <ListGroup.Item>
+                  Genres: {book.genres}
+                </ListGroup.Item>
+                {/* <ListGroup.Item>
+                  Characters: {book.characters}
+                </ListGroup.Item> */}
                 <ListGroup.Item>
                   Language: {book.language}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Year: {book.year}
+                  Publish Date: {book.publishDate}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Pages: {book.page}
+                  Publisher: {book.publisher}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  BookForm: {book.bookForm}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Pages: {book.pages}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Series: {book.series}
                 </ListGroup.Item>
                 <ListGroupItem>
-                  Description:<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+                  Description: {book.description}
                 </ListGroupItem>
               </ListGroup>
             </Col>
@@ -100,6 +119,22 @@ const BookScreen = ({ match, history }) => {
               </ListGroup>
             </Col>
           </Row>
+          <Row>
+            <h1>Recommended Books</h1>
+            {loadingRecommend ? <Loader /> : errorRecommend ? <Message variant='danger'>{errorRecommend} </Message> :
+              (
+                books.map(book => (
+                  <Col key={book._id} sm={12} md={6} lg={4} xl={3}>
+                    <Card className='my-3 rounded'>
+                      <Link to={`/book/${book._id}`}>
+                        <Card.Img src={book.coverImg} varient='top' />
+                      </Link>
+                    </Card>
+                  </Col>
+                ))
+              )}
+          </Row>
+
           <Row>
             <Col md={6}>
               <h1>Reviews</h1>

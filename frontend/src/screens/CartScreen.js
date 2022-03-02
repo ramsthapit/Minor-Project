@@ -39,7 +39,7 @@ const CartScreen = ({match}) => {
                 <ListGroupItem key ={item.book}>
                   <Row>
                     <Col md={1}>
-                      <Image src={item.image} alt={item.title} fluid rounded/>
+                      <Image src={item.coverImg} alt={item.title} fluid rounded/>
                     </Col>
                     <Col md={4}>
                       <Link to={`/book/${item.book}`} >{item.title} </Link>

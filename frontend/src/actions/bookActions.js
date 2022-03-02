@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { BOOK_CREATE_REVIEW_FAIL, BOOK_CREATE_REVIEW_REQUEST, BOOK_CREATE_REVIEW_SUCCESS, BOOK_DETAILS_FAIL, BOOK_DETAILS_REQUEST, BOOK_DETAILS_SUCCESS, BOOK_LIST_FAIL, BOOK_LIST_REQUEST, BOOK_LIST_SUCCESS } from "../constants/bookContants"
+import { BOOK_CREATE_REVIEW_FAIL, BOOK_CREATE_REVIEW_REQUEST, BOOK_CREATE_REVIEW_SUCCESS, BOOK_DETAILS_FAIL, BOOK_DETAILS_REQUEST, BOOK_DETAILS_SUCCESS, BOOK_LIST_FAIL, BOOK_LIST_REQUEST, BOOK_LIST_SUCCESS, BOOK_RECOMMEND_FAIL, BOOK_RECOMMEND_REQUEST, BOOK_RECOMMEND_SUCCESS } from "../constants/bookContants"
 
 export const listBooks = (keyword='') => async(dispatch) => {
   try
@@ -79,4 +79,26 @@ export const createBookReview = (bookId, review) => async(dispatch, getState) =>
         : error.message,
     })
   }
+}
+
+export const listBookRecommend = (id) => async(dispatch) => {
+  try
+  {
+    dispatch({ type: BOOK_RECOMMEND_REQUEST })
+    const { data } = await axios.get(`/api/books/${id}/recommend/`)
+    console.log(data);
+    dispatch({
+      type: BOOK_RECOMMEND_SUCCESS,
+      payload: data
+    })
+  }
+  catch (error)
+  {
+    dispatch({
+      type: BOOK_RECOMMEND_FAIL,
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    })
+  } 
 }
