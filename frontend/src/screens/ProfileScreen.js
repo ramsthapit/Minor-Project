@@ -17,6 +17,7 @@ function ProfileScreen({ history }) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState('')
+    const [valid,setValid]=useState(false)
 
     const dispatch = useDispatch()
 
@@ -122,13 +123,13 @@ function ProfileScreen({ history }) {
                         </Form.Control>
                     </Form.Group>
                     <PasswordChecklist
-				rules={["minLength","specialChar","number","capital","match"]}
-				minLength={5}
-				value={password}
-				valueAgain={confirmPassword}
-				onChange={(isValid) => {}}/>
+				        rules={["minLength","specialChar","number","capital","match"]}
+				        minLength={5}
+				        value={password}
+                        valueAgain={confirmPassword}
+				        onChange={(isValid) => {setValid(isValid)}}/>
 
-                    <Button type='submit' variant='primary'>
+                    <Button type='submit' variant='primary' disabled={!valid} >
                         Update
                 </Button>
 
