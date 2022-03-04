@@ -44,7 +44,7 @@ function RegisterScreen({ location, history }) {
 
     return (
         <FormContainer>
-            <h1>Sign In</h1>
+            <h1>Register</h1>
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
@@ -104,10 +104,10 @@ function RegisterScreen({ location, history }) {
                     valueAgain={confirmPassword}
                     onChange={(isValid) => { setValid(isValid)}}     
                 />
-			{valid && 
-                <Button type='submit' variant='primary'>
+			
+                <Button type='submit' variant='primary' disabled={!valid}>
                     Register
-                </Button>}
+                </Button>
 
             </Form>
 

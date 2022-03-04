@@ -29,6 +29,7 @@ const HomeScreen = ({history}) => {
                 <Card className='my-3 rounded'>
                   <Link to={`/book/${book._id}`}>
                   <Card.Img src={book.coverImg} variant='top'  width="193" height="450" />
+
                   </Link>
                 </Card>
               </Col>
