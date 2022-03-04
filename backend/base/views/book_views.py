@@ -148,8 +148,6 @@ def createBookReview(request, pk):
 
 
 import pickle
-import pandas as pd
-import numpy as np
 
 
 similarity = pickle.load(open('similarity.pkl', 'rb'))
