@@ -25,10 +25,11 @@ const HomeScreen = ({history}) => {
         <div>
           <Row>
             {books.map(book => (
-              <Col key={book._id} sm={12} md={6} lg={4} xl={3}>
+              <Col key={book._id} sm={12} md={6} lg={4} xl={3} >
                 <Card className='my-3 rounded'>
                   <Link to={`/book/${book._id}`}>
-                  <Card.Img src={book.coverImg} variant='top'  />
+                  <Card.Img src={book.coverImg} variant='top'  width="193" height="450" />
+
                   </Link>
                 </Card>
               </Col>

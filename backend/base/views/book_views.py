@@ -149,7 +149,6 @@ def createBookReview(request, pk):
 
 import pickle
 
-
 similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 @api_view(['GET'])
