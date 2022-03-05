@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
+// import ReadMoreAndLess from "react-read-more-less";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Card, Col, Form, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
 import { createBookReview, listBookDetails, listBookRecommend } from '../actions/bookActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import ScrollToTop from "react-scroll-to-top";
 import { BOOK_CREATE_REVIEW_RESET } from '../constants/bookContants'
 
 
@@ -17,7 +19,7 @@ const BookScreen = ({ match, history }) => {
 
   const bookDetails = useSelector(state=>state.bookDetails)
   const { loading, error, book } = bookDetails 
-  
+
   const userLogin = useSelector(state=>state.userLogin)
   const { userInfo } = userLogin 
   
@@ -102,7 +104,15 @@ const BookScreen = ({ match, history }) => {
                   Series: {book.series}
                 </ListGroup.Item>
                 <ListGroupItem>
-                  Description: {book.description}
+                  Description:
+                  {/* <ReadMoreAndLess
+                    className="read-more-content"
+                    charLimit={200}
+                    readMoreText="Read more"
+                    readLessText="Read less"
+                  > */}
+                    {book.description}
+                  {/* </ReadMoreAndLess> */}
                 </ListGroupItem>
               </ListGroup>
             </Col>
@@ -202,6 +212,7 @@ const BookScreen = ({ match, history }) => {
         </div>
         
       }
+      <ScrollToTop smooth color="#6f00ff" height='20' width='20'/>
     </>
   )
 }

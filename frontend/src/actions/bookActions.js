@@ -86,7 +86,6 @@ export const listBookRecommend = (id) => async(dispatch) => {
   {
     dispatch({ type: BOOK_RECOMMEND_REQUEST })
     const { data } = await axios.get(`/api/books/${id}/recommend/`)
-    console.log(data);
     dispatch({
       type: BOOK_RECOMMEND_SUCCESS,
       payload: data

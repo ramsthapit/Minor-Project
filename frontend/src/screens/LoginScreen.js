@@ -69,7 +69,8 @@ const LoginScreen = ({location, history}) => {
           </Link>
         </Col>
       </Row>
-  </FormContainer>
+    </FormContainer>
+    
   )
 }
 
