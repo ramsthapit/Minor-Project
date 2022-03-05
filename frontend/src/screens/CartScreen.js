@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 import {Row, Col, ListGroup, ListGroupItem, Image, Button} from 'react-bootstrap'
 import Message from '../components/Message'
+// import ScrollToTop from "react-scroll-to-top";
 import { Link } from 'react-router-dom'
 
 const CartScreen = ({match}) => {

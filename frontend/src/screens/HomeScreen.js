@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { Link } from 'react-router-dom'
 import Paginate from '../components/Paginate'
+import ScrollToTop from "react-scroll-to-top";
 
 const HomeScreen = ({history}) => {
   const dispatch = useDispatch()
@@ -23,19 +24,20 @@ const HomeScreen = ({history}) => {
       <h1>Our Collection</h1> 
       {loading ? <Loader /> : error ? <Message variant='danger'>{error} </Message> :
         <div>
+        
           <Row>
             {books.map(book => (
               <Col key={book._id} sm={12} md={6} lg={4} xl={3} >
                 <Card className='my-3 rounded'>
                   <Link to={`/book/${book._id}`}>
                   <Card.Img src={book.coverImg} variant='top'  width="193" height="450" />
-
                   </Link>
                 </Card>
               </Col>
             ))}
           </Row>
           <Paginate page={page} pages={pages} keyword={keyword} />
+          <ScrollToTop smooth color="#6f00ff" height='20' width='20'/>
         </div>
       }
       
