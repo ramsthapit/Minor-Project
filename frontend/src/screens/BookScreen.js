@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import ReadMoreAndLess from "react-read-more-less";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Card, Col, Form, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
@@ -8,6 +7,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import ScrollToTop from "react-scroll-to-top";
 import { BOOK_CREATE_REVIEW_RESET } from '../constants/bookContants'
+import ReadMore from '../components/ReadMore'
 
 
 const BookScreen = ({ match, history }) => {
@@ -104,15 +104,7 @@ const BookScreen = ({ match, history }) => {
                   Series: {book.series}
                 </ListGroup.Item>
                 <ListGroupItem>
-                  Description:
-                  {/* <ReadMoreAndLess
-                    className="read-more-content"
-                    charLimit={200}
-                    readMoreText="Read more"
-                    readLessText="Read less"
-                  > */}
-                    {book.description}
-                  {/* </ReadMoreAndLess> */}
+                  Description:{(book.description !== undefined) && <ReadMore children={book.description}/>}
                 </ListGroupItem>
               </ListGroup>
             </Col>
