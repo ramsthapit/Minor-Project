@@ -8,6 +8,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import ScrollToTop from "react-scroll-to-top";
 import { BOOK_CREATE_REVIEW_RESET } from '../constants/bookContants'
+import Ratings from '../components/Ratings'
 
 
 const BookScreen = ({ match, history }) => {
@@ -67,53 +68,35 @@ const BookScreen = ({ match, history }) => {
           <Row>
             <Col md={3} >
               <Image src={book.coverImg} alt={book.title} fluid />
+              { <Ratings 
+             
+             value={book.rating} 
+             text={`${book.numRatings} reviews`} 
+             color='#d52a7a'
+             
+         /> }
             </Col>
             <Col md={6}>
               <ListGroup varient='flush'>
               <ListGroup.Item>
-                  <h1>{book.title}</h1>
+              <h1>{book.title}</h1>
+                  <b> Author: </b>{book.author}<br/>
+                  <b> isbn: </b> {book.isbn}<br/>
+                  <b> Genres: </b> {book.genres}<br/>
+                
+                  <b> Language: </b> {book.language}<br/>
+                
+                  <b> Publisher: </b> {book.publisher}<br/>
+               
+                  <b> BookForm: </b> {book.bookForm}<br/>
+              
+                  <b> Pages: </b> {book.pages}<br/>
+                
+                  <b> Series: </b> {book.series}<br/>
+                  <br/>
+              
+                  <b> Description: </b> {book.description}
                 </ListGroup.Item>
-                <ListGroup.Item>
-                  Author: {book.author}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  isbn: {book.isbn}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  Genres: {book.genres}
-                </ListGroup.Item>
-                {/* <ListGroup.Item>
-                  Characters: {book.characters}
-                </ListGroup.Item> */}
-                <ListGroup.Item>
-                  Language: {book.language}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  Publish Date: {book.publishDate}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  Publisher: {book.publisher}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  BookForm: {book.bookForm}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  Pages: {book.pages}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  Series: {book.series}
-                </ListGroup.Item>
-                <ListGroupItem>
-                  Description:
-                  {/* <ReadMoreAndLess
-                    className="read-more-content"
-                    charLimit={200}
-                    readMoreText="Read more"
-                    readLessText="Read less"
-                  > */}
-                    {book.description}
-                  {/* </ReadMoreAndLess> */}
-                </ListGroupItem>
               </ListGroup>
             </Col>
             <Col md={3}>
