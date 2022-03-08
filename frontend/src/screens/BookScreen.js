@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import ReadMoreAndLess from "react-read-more-less";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Card, Col, Form, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap'
@@ -9,6 +8,7 @@ import Message from '../components/Message'
 import ScrollToTop from "react-scroll-to-top";
 import { BOOK_CREATE_REVIEW_RESET } from '../constants/bookContants'
 import Ratings from '../components/Ratings'
+import ReadMore from '../components/ReadMore'
 
 
 const BookScreen = ({ match, history }) => {
@@ -95,7 +95,7 @@ const BookScreen = ({ match, history }) => {
                   <b> Series: </b> {book.series}<br/>
                   <br/>
               
-                  <b> Description: </b> {book.description}
+                  <b> Description: </b> {(book.description !== undefined) && <ReadMore children={book.description}/>}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
