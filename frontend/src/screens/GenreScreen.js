@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect } from 'react'
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
 import { Card, Col, Row } from 'react-bootstrap'
 import { listBooks } from '../actions/bookActions'
 import Loader from '../components/Loader'

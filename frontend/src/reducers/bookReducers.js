@@ -1,4 +1,10 @@
-import {BOOK_CREATE_REVIEW_FAIL, BOOK_CREATE_REVIEW_REQUEST, BOOK_CREATE_REVIEW_RESET, BOOK_CREATE_REVIEW_SUCCESS, BOOK_DETAILS_FAIL, BOOK_DETAILS_REQUEST, BOOK_DETAILS_SUCCESS, BOOK_LIST_FAIL, BOOK_LIST_REQUEST, BOOK_LIST_SUCCESS, BOOK_RECOMMEND_FAIL, BOOK_RECOMMEND_REQUEST, BOOK_RECOMMEND_SUCCESS} from '../constants/bookContants'
+import {BOOK_CREATE_REVIEW_FAIL, BOOK_CREATE_REVIEW_REQUEST, BOOK_CREATE_REVIEW_RESET, BOOK_CREATE_REVIEW_SUCCESS, 
+  BOOK_DETAILS_FAIL, BOOK_DETAILS_REQUEST, BOOK_DETAILS_SUCCESS, BOOK_LIST_FAIL, BOOK_LIST_REQUEST, BOOK_LIST_SUCCESS, 
+  BOOK_RECOMMEND_FAIL, BOOK_RECOMMEND_REQUEST, BOOK_RECOMMEND_SUCCESS,
+  BOOK_TOP_REQUEST,
+  BOOK_TOP_SUCCESS,
+  BOOK_TOP_FAIL 
+} from '../constants/bookContants'
 
 export const bookListReducer = (state = { books: [] }, action) => {
   switch (action.type){
@@ -54,3 +60,18 @@ export const bookListRecommend = (state = { books: [] }, action) => {
       return state 
   }
 }
+
+export const bookTopRatedReducer = ( state = { books: [] }, action) => {
+  switch(action.type){
+case BOOK_TOP_REQUEST:
+  return { loading: true, books: []}
+case BOOK_TOP_SUCCESS:
+  return{loading: false, books: action.payload }
+case BOOK_TOP_FAIL:
+  return { loading: false, error: action.payload}
+
+default:    
+  return state
+  
+  }
+} 

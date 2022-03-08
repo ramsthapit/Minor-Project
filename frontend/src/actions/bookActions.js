@@ -1,5 +1,12 @@
 import axios from 'axios'
-import { BOOK_CREATE_REVIEW_FAIL, BOOK_CREATE_REVIEW_REQUEST, BOOK_CREATE_REVIEW_SUCCESS, BOOK_DETAILS_FAIL, BOOK_DETAILS_REQUEST, BOOK_DETAILS_SUCCESS, BOOK_LIST_FAIL, BOOK_LIST_REQUEST, BOOK_LIST_SUCCESS, BOOK_RECOMMEND_FAIL, BOOK_RECOMMEND_REQUEST, BOOK_RECOMMEND_SUCCESS } from "../constants/bookContants"
+import { BOOK_CREATE_REVIEW_FAIL, BOOK_CREATE_REVIEW_REQUEST, BOOK_CREATE_REVIEW_SUCCESS, BOOK_DETAILS_FAIL, BOOK_DETAILS_REQUEST, 
+  BOOK_DETAILS_SUCCESS, 
+  BOOK_LIST_FAIL, BOOK_LIST_REQUEST, BOOK_LIST_SUCCESS, BOOK_RECOMMEND_FAIL, BOOK_RECOMMEND_REQUEST, 
+  BOOK_RECOMMEND_SUCCESS,
+  BOOK_TOP_REQUEST,
+  BOOK_TOP_SUCCESS,
+  BOOK_TOP_FAIL
+} from "../constants/bookContants"
 
 export const listBooks = (keyword='') => async(dispatch) => {
   try
@@ -101,3 +108,24 @@ export const listBookRecommend = (id) => async(dispatch) => {
     })
   } 
 }
+
+export const listTopBooks=()=> async(
+  dispatch
+)=>{
+  try{
+      dispatch({ type: BOOK_TOP_REQUEST})
+      const { data } = await axios.get(`/api/books/top/`)
+  
+      dispatch({ type: BOOK_TOP_SUCCESS,
+      payload: data,
+  })
+      
+  } catch (error){
+  dispatch({
+      type: BOOK_TOP_FAIL,
+      payload: error.response && error.data.message 
+      ? error.response.data.message
+      : error.message
+  })
+  }
+  }

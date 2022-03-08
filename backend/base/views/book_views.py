@@ -171,3 +171,10 @@ def recommend(request, pk):
 
     serializer = BookSerializer(bookList, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getTopBooks(request):
+    books = Book.objects.filter(rating__gte=4).order_by('-rating')[0:5]
+    serializer = BookSerializer(books, many=True)
+    return Response(serializer.data)

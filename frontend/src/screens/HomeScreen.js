@@ -7,6 +7,7 @@ import Message from '../components/Message'
 import { Link } from 'react-router-dom'
 import Paginate from '../components/Paginate'
 import ScrollToTop from "react-scroll-to-top";
+import BookCarousel from '../components/BookCarousel'
 
 const HomeScreen = ({history}) => {
   const dispatch = useDispatch()
@@ -21,6 +22,9 @@ const HomeScreen = ({history}) => {
   
   return (
     <>
+      <BookCarousel />
+      <br/>
+      <br/>
       <h1>Our Collection</h1> 
       {loading ? <Loader /> : error ? <Message variant='danger'>{error} </Message> :
         <div>

@@ -7,7 +7,6 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 import { register } from '../actions/userActions'
-// import SignUp from '../components/Validate'
 
 function RegisterScreen({ location, history }) {
 
