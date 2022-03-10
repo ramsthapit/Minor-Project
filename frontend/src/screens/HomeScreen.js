@@ -22,7 +22,8 @@ const HomeScreen = ({history}) => {
   
   return (
     <>
-      <BookCarousel />
+      {!keyword && <BookCarousel /> }
+      
       <br/>
       <br/>
       <h1>Our Collection</h1> 
