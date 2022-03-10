@@ -61,9 +61,9 @@ function UserListScreen({ history }) {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user.isAdmin ? (
-                                        <i className='fas fa-check' style={{ color: 'green' }}></i>
+                                        <i className='fas fa-check' style={{ color: 'white' }}></i>
                                     ) : (
-                                            <i className='fas fa-check' style={{ color: 'red' }}></i>
+                                            <i className='fas fa-times' style={{ color: 'red' }}></i>
                                         )}</td>
 
                                     <td>
