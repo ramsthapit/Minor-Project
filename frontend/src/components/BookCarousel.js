@@ -18,7 +18,7 @@ const BookCarousel = () => {
 
     return loading ? <Loader /> : error ? <Message variant= 'danger'> { error }</Message>: (
         <Carousel pause= 'hover' 
-        className='bg-transparent'
+        className='bg-dark'
         >
             {books.map(book =>(
                 

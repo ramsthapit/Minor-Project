@@ -108,8 +108,17 @@ const BookScreen = ({ match, history }) => {
                   type='button'>
                   Add to Wishlist
                 </Button>
-                {/* <Button variant="warning" className='btn-block'>BUY</Button> */}
               </ListGroup>
+              <ListGroup>
+                <Button variant="secondary" className='btn-block'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://www.google.com/search?q=${book.title} buy online book`;
+                  }}>
+                  BUY
+                </Button>
+              </ListGroup>
+               
             </Col>
           </Row>
           <Row>
