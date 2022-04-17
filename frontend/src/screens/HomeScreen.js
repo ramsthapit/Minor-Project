@@ -25,7 +25,7 @@ const HomeScreen = ({history}) => {
       <BookCarousel />
       <br/>
       <br/>
-      <h1>Our Collection</h1> 
+      <h1>Our Collections</h1> 
       {loading ? <Loader /> : error ? <Message variant='danger'>{error} </Message> :
         <div>
         
