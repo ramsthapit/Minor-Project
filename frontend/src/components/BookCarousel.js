@@ -18,15 +18,14 @@ const BookCarousel = () => {
 
     return loading ? <Loader /> : error ? <Message variant= 'danger'> { error }</Message>: (
         <Carousel pause= 'hover' 
-        className='bg-dark'
-        >
+            className='bg-transparant rounded'>
             {books.map(book =>(
                 
                 <Carousel.Item key={book._id}>
                     <Link to = {`/book/${book._id}`}>
                         < Image src = {book.coverImg} alt={book.name}   width="300" height="450" fluid />
                         <Carousel.Caption className ='carousel-caption'>
-                            <h2> {book.title} ({book.price}) </h2>
+                            <h2> {book.title} (${book.price}) </h2>
                         </Carousel.Caption>
                         
                     </Link>

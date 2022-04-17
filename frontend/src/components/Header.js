@@ -26,15 +26,19 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <SearchBox />
             <Nav className="ms-auto">
-
-              <LinkContainer to='/'>
+            <LinkContainer to='/'>
                 <Nav.Link><i className='fas fa-home'></i>Home</Nav.Link>
               </LinkContainer>
+              
               <LinkContainer to='/genre'>
                 <Nav.Link><i className='fas fa-book'></i>Genre</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/cart'>
                 <Nav.Link><i className='fas fa-heart'></i>Wish List</Nav.Link>
+              </LinkContainer>
+
+              <LinkContainer to='/about'>
+                <Nav.Link><i className="fa-solid fa-address-card"></i>About</Nav.Link>
               </LinkContainer>
               
               {userInfo ? (

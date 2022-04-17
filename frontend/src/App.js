@@ -12,6 +12,7 @@ import UserEditScreen from './screens/UserEditScreen'
 import GenreScreen  from './screens/GenreScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
+import AboutScreen from './screens/AboutScreen'
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/' component={HomeScreen} exact/>
           <Route path='/book/:id' component={BookScreen}  />
           <Route path='/genre' component={GenreScreen}  />
+          <Route path='/about' component={AboutScreen}  />
           <Route path='/cart/:id?' component={CartScreen} />
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen}/>
