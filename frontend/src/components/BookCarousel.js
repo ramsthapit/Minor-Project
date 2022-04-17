@@ -18,8 +18,7 @@ const BookCarousel = () => {
 
     return loading ? <Loader /> : error ? <Message variant= 'danger'> { error }</Message>: (
         <Carousel pause= 'hover' 
-        className='bg-transparent, my-3, p-3 rounded'
-        >
+            className='bg-transparant rounded'>
             {books.map(book =>(
                 
                 <Carousel.Item key={book._id}>
