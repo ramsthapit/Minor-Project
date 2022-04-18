@@ -126,7 +126,7 @@ const BookScreen = ({ match, history }) => {
             {loadingRecommend ? <Loader /> : errorRecommend ? <Message variant='danger'>{errorRecommend} </Message> :
               (
                 books.map(book => (
-                  <Col key={book._id} sm={12} md={10} lg={5} xl={3}>
+                  <Col key={book._id} sm={12} md={6} lg={4} xl={3}>
                     <Card className='my-3 rounded'>
                       <Link to={`/book/${book._id}`}>
                         <Card.Img src={book.coverImg} varient='top' width="193" height="450" />
@@ -134,7 +134,7 @@ const BookScreen = ({ match, history }) => {
                     </Card>
                   </Col>
                 ))
-              )}
+              )} 
           </Row>
 
           <Row>

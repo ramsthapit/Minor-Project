@@ -30,9 +30,9 @@ const Header = () => {
                 <Nav.Link><i className='fas fa-home'></i>Home</Nav.Link>
               </LinkContainer>
               
-              <LinkContainer to='/genre'>
+              {/* <LinkContainer to='/genre'>
                 <Nav.Link><i className='fas fa-book'></i>Genre</Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
               <LinkContainer to='/cart'>
                 <Nav.Link><i className='fas fa-heart'></i>Wish List</Nav.Link>
               </LinkContainer>

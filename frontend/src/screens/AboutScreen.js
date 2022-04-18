@@ -32,7 +32,7 @@ const AboutScreen = () => {
 
           <Col sm={12} md={6} lg={4} xl={3}>
             <Card className='my-3 rounded'>
-              <Card.Img variant="top" src="../images/Jaya.jpeg" width="193" height="450"/>
+              <Card.Img variant="top" src="../images/Jaya.jpeg" width="193" height="400"/>
               <Card.Body>
                 <Card.Title>Jaya Shrestha</Card.Title>
                 <Card.Text>
@@ -48,7 +48,7 @@ const AboutScreen = () => {
 
           <Col sm={12} md={6} lg={4} xl={3}>
             <Card className="my-3 rounded">
-              <Card.Img variant="top" src="../images/Monika.jpeg" width="193" height="450"/>
+              <Card.Img variant="top" src="../images/Monika.jpeg" width="193" height="400"/>
               <Card.Body>
                 <Card.Title>Monika Gautam</Card.Title>
                 <Card.Text>
@@ -64,7 +64,7 @@ const AboutScreen = () => {
 
           <Col sm={12} md={6} lg={4} xl={3}>
             <Card className='my-3 rounded'>
-              <Card.Img variant="top" src="../images/Ram.jpeg" width="193" height="450"/>
+              <Card.Img variant="top" src="../images/Ram.jpeg" width="193" height="400"/>
               <Card.Body>
                 <Card.Title>Ram Sthapit</Card.Title>
                 <Card.Text>
@@ -80,7 +80,7 @@ const AboutScreen = () => {
           
           <Col sm={12} md={6} lg={4} xl={3}>
             <Card className='my-3 rounded'>
-              <Card.Img variant="top" src="../images/Shreejana.jpeg" width="193" height="450" />
+              <Card.Img variant="top" src="../images/Shreejana.jpeg" width="193" height="400" />
               <Card.Body>
                 <Card.Title>Shreejana B.C.</Card.Title>
                 <Card.Text>
