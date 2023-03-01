@@ -1,5 +1,6 @@
 import pickle
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -88,7 +89,39 @@ def createBook(request):
 @permission_classes([IsAdminUser])
 def updateBook(request, pk):
     data = request.data
-    print(data['rating'])
+    # print(request.user.is_staff)
+    # print(data)
+    book = Book.objects.get(_id=pk)
+    book.title = data['title']
+    book.series = data['series']
+    book.author = data['author']
+    book.rating = data['rating']
+    book.description = data['description']
+    book.language = data['language']
+    book.isbn = data['isbn']
+    book.genres = data['genres']
+    book.characters = data['characters']
+    book.bookForm = data['bookForm']
+    book.pages = data['pages']
+    book.publisher = data['publisher']
+    book.publishDate = data['publishDate']
+    book.numRatings = data['numRatings']
+    book.coverImg = data['coverImg']
+    book.price = data['price']
+
+    book.save()
+
+    serilizer = BookSerializer(book, many=False)
+    return Response(serilizer.data)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateBookId(request, pk, pk1):
+    data = request.data
+    # print(request.user.is_staff)
+    # print(data)
+    # print(pk1)
     book = Book.objects.get(_id=pk)
     book.title = data['title']
     book.series = data['series']

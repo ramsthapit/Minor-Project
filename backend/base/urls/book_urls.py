@@ -10,4 +10,5 @@ urlpatterns = [
     path('create/', views.createBook, name="create-book"),
     path('<str:pk>/', views.getBook, name="book"),
     path('update/<str:pk>/', views.updateBook, name="update-book"),
+    path('update/<str:pk>/<str:pk1>/', views.updateBookId, name="update-book-id"),
 ]
