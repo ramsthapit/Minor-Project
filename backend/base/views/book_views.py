@@ -23,7 +23,7 @@ def getBooks(request):
     books = Book.objects.filter(title__icontains=query)
 
     page = request.query_params.get('page')
-    paginator = Paginator(books, 2000)
+    paginator = Paginator(books, 12)
 
     try:
         books = paginator.page(page)
@@ -63,7 +63,6 @@ def createBook(request):
     data = request.data
     book = Book.objects.create(
         user=user,
-        # _id=1915,
         author='sample name',
         title='title',
         series='series',
@@ -89,23 +88,24 @@ def createBook(request):
 @permission_classes([IsAdminUser])
 def updateBook(request, pk):
     data = request.data
+    print(data['rating'])
     book = Book.objects.get(_id=pk)
-    book.title = data['title'],
-    book.series = data['series'],
-    book.author = data['author'],
-    book.rating = data['rating'],
-    book.description = data['description'],
-    book.language = data['language'],
-    book.isbn = data['isbn'],
-    book.genres = data['genres'],
-    book.characters = data['characters'],
-    book.bookForm = data['bookForm'],
-    book.pages = data['pages'],
-    book.publisher = data['publisher'],
-    book.publishDate = data['publishDate'],
-    book.numRatings = data['numRatings'],
-    book.coverImg = data['coverImg'],
-    book.price = data['price'],
+    book.title = data['title']
+    book.series = data['series']
+    book.author = data['author']
+    book.rating = data['rating']
+    book.description = data['description']
+    book.language = data['language']
+    book.isbn = data['isbn']
+    book.genres = data['genres']
+    book.characters = data['characters']
+    book.bookForm = data['bookForm']
+    book.pages = data['pages']
+    book.publisher = data['publisher']
+    book.publishDate = data['publishDate']
+    book.numRatings = data['numRatings']
+    book.coverImg = data['coverImg']
+    book.price = data['price']
 
     book.save()
 
