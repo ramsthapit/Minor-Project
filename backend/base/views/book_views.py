@@ -23,7 +23,7 @@ def getBooks(request):
     books = Book.objects.filter(title__icontains=query)
 
     page = request.query_params.get('page')
-    paginator = Paginator(books, 12)
+    paginator = Paginator(books, 2000)
 
     try:
         books = paginator.page(page)
@@ -63,7 +63,7 @@ def createBook(request):
     data = request.data
     book = Book.objects.create(
         user=user,
-        _id=5000,
+        # _id=1915,
         author='sample name',
         title='title',
         series='series',
@@ -90,7 +90,6 @@ def createBook(request):
 def updateBook(request, pk):
     data = request.data
     book = Book.objects.get(_id=pk)
-    book.author = data['author'],
     book.title = data['title'],
     book.series = data['series'],
     book.author = data['author'],
