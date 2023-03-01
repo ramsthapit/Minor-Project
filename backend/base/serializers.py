@@ -8,15 +8,19 @@ class UserSerializer(serializers.ModelSerializer):
   name = serializers.SerializerMethodField(read_only=True)
   _id = serializers.SerializerMethodField(read_only=True)
   isAdmin = serializers.SerializerMethodField(read_only=True)
+  isVendor = serializers.SerializerMethodField(read_only=True)
 
   class Meta:
     model= User
-    fields=['id','_id','username','email', 'name','isAdmin']
+    fields=['id','_id','username','email', 'name','isAdmin','isVendor']
   
   def get__id(self, obj):
     return obj.id
 
   def get_isAdmin(self, obj):
+    return obj.is_superuser
+  
+  def get_isVendor(self, obj):
     return obj.is_staff
 
   def get_name(self, obj):
@@ -29,7 +33,7 @@ class UserSerializerWithToken(UserSerializer):
   token = serializers.SerializerMethodField(read_only=True)
   class Meta:
     model = User
-    fields=['id','_id','username','email', 'name','isAdmin','token']
+    fields=['id','_id','username','email', 'name','isAdmin','isVendor','token']
 
   def get_token(self, obj):
     token = RefreshToken.for_user(obj)
@@ -42,6 +46,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class BookSerializer(serializers.ModelSerializer):
   reviews = serializers.SerializerMethodField(read_only=True)
+  _id = serializers.SerializerMethodField(read_only=True)
 
   class Meta:
     model= Book
@@ -51,3 +56,6 @@ class BookSerializer(serializers.ModelSerializer):
     reviews = obj.review_set.all()
     serializers = ReviewSerializer(reviews, many=True)
     return serializers.data
+  
+  def get__id(self, obj):
+    return obj._id

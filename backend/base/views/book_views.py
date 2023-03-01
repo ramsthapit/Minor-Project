@@ -60,25 +60,26 @@ def deleteBook(request, pk):
 @permission_classes([IsAdminUser])
 def createBook(request):
     user = request.user
+    data = request.data
     book = Book.objects.create(
         user=user,
-        category=0,
+        _id=5000,
         author='sample name',
         title='title',
         series='series',
-        rating='rating',
+        rating=2.5,
         description='description',
         language='english',
         isbn='isbn',
         genres='genres',
         characters='characters',
         bookForm='bookForm',
-        pages='pages',
+        pages=512,
         publisher='publisher',
-        publishDate='publishDate',
-        numRatings='numRatings',
+        publishDate='2008-09-12',
+        numRatings=6376780,
         coverImg='coverImg',
-        price='price',
+        price="2.0",
     )
     serializer = BookSerializer(book, many=False)
     return Response(serializer.data)
