@@ -34,7 +34,7 @@ class Book(models.Model):
         max_digits=1000, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
-        return str('%s (%s)'% (self.id, self.book.title))
+        return str('%s (%s)'% (self._id, self.title))
     
     # def save(self, *args, **kwargs):
     #     obj = super(Book, self).save(*args, **kwargs)
