@@ -23,6 +23,58 @@ def getBooks(request):
 
     books = Book.objects.filter(title__icontains=query)
 
+    # bookForm filter 
+    bookForm = request.query_params.get('bookForm')
+    if bookForm == None:
+        bookForm = ''
+
+    bookForm = bookForm.split(',')
+
+    for i in bookForm:
+        books = books.filter(bookForm__icontains=i)
+
+
+    # language filter 
+    language = request.query_params.get('language')
+    if language == None:
+        language = ''
+
+    books = books.filter(language__icontains=language)
+
+    # genres filter 
+    genres = request.query_params.get('genres')
+    if genres == None:
+        genres = ''
+    genres = genres.split(',')
+
+    for i in genres:
+        books = books.filter(genres__icontains=i)
+
+    # bookPages filter 
+    bookPages = request.query_params.get('bookPages')
+    if bookPages != None:
+        bookPages = bookPages.split('-')
+        books = books.filter(pages__gte=bookPages[0],pages__lte=bookPages[1])
+
+    # price filter 
+    price = request.query_params.get('price')
+    if price != None:
+        price = price.split('-')
+        books = books.filter(price__gte=price[0],price__lte=price[1])
+
+    # rating filter 
+    rating = request.query_params.get('rating')
+    if rating != None:
+        rating = rating.split('-')
+        books = books.filter(rating__gte=rating[0],rating__lte=rating[1])
+    
+    # publishDate filter 
+    publishDate = request.query_params.get('publishDate')
+    if publishDate != None:
+        publishDate = publishDate.split(',')
+        books = books.filter(publishDate__range=[publishDate[0], publishDate[1]])
+
+
     page = request.query_params.get('page')
     paginator = Paginator(books, 12)
 
@@ -37,6 +89,7 @@ def getBooks(request):
         page = 1
 
     page = int(page)
+
 
     serializer = BookSerializer(books, many=True)
     return Response({'books': serializer.data, 'page': page, 'pages': paginator.num_pages})
