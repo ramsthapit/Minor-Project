@@ -74,9 +74,12 @@ def getBooks(request):
         publishDate = publishDate.split(',')
         books = books.filter(publishDate__range=[publishDate[0], publishDate[1]])
 
-
+    bookNo=12
     page = request.query_params.get('page')
-    paginator = Paginator(books, 12)
+    if query == "":
+        bookNo=15
+    
+    paginator = Paginator(books, bookNo)
 
     try:
         books = paginator.page(page)
