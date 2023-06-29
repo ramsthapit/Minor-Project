@@ -106,6 +106,7 @@ def updateUserById(request, pk):
   user.username = data['email']
   user.email = data['email']
   user.is_superuser = data['isAdmin']
+  user.is_staff = data['isVendor']
 
   user.save()
   
