@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "romance"
+  },
+  {
+    "id": 2,
+    "name": "fiction"
+  },
+  {
+    "id": 3,
+    "name": "young-adult"
+  },
+  {
+    "id": 4,
+    "name": "fantasy"
+  },
+  {
+    "id": 5,
+    "name": "science-fiction"
+  },
+  {
+    "id": 6,
+    "name": "non-fiction"
+  },
+  {
+    "id": 7,
+    "name": "children"
+  },
+  {
+    "id": 8,
+    "name": "history"
+  },
+  {
+    "id": 9,
+    "name": "mystery"
+  },
+  {
+    "id": 10,
+    "name": "covers"
+  },
+  {
+    "id": 11,
+    "name": "horror"
+  },
+  {
+    "id": 12,
+    "name": "historical-fiction"
+  },
+  {
+    "id": 13,
+    "name": "best"
+  },
+  {
+    "id": 14,
+    "name": "gay"
+  },
+  {
+    "id": 15,
+    "name": "titles"
+  },
+  {
+    "id": 16,
+    "name": "paranormal"
+  },
+  {
+    "id": 17,
+    "name": "love"
+  },
+  {
+    "id": 18,
+    "name": "middle-grade"
+  },
+  {
+    "id": 19,
+    "name": "contemporary"
+  },
+  {
+    "id": 20,
+    "name": "historical-romance"
+  },
+  {
+    "id": 21,
+    "name": "nonfiction"
+  },
+  {
+    "id": 22,
+    "name": "thriller"
+  },
+  {
+    "id": 23,
+    "name": "lgbt"
+  },
+  {
+    "id": 24,
+    "name": "queer"
+  },
+  {
+    "id": 25,
+    "name": "biography"
+  },
+  {
+    "id": 26,
+    "name": "women"
+  },
+  {
+    "id": 27,
+    "name": "series"
+  },
+  {
+    "id": 28,
+    "name": "classics"
+  },
+  {
+    "id": 29,
+    "name": "graphic-novels"
+  },
+  {
+    "id": 30,
+    "name": "lgbtq"
+  }
+]
