@@ -321,6 +321,37 @@ def getDashboard(request):
 
 @api_view(["GET"])
 @permission_classes([IsAdminUser])
+def resetBook(request):
+    dataset = pd.read_csv("Book.csv")
+    user = request.user
+    Book.objects.all().delete()
+
+    for i in range(len(dataset)):
+        book = Book(
+            user=user,
+            title=dataset.iloc[i].Title,
+            series=dataset.iloc[i].Series,
+            author=dataset.iloc[i].Author,
+            rating=dataset.iloc[i].Rating,
+            description=dataset.iloc[i].Description,
+            language=dataset.iloc[i].Language,
+            isbn=dataset.iloc[i].Isbn,
+            genres=dataset.iloc[i].Genres,
+            characters=dataset.iloc[i].Characters,
+            bookForm=dataset.iloc[i].BookFormat,
+            pages=dataset.iloc[i].Pages,
+            publisher=dataset.iloc[i].Publisher,
+            publishDate=dataset.iloc[i].PublishDate,
+            numRatings=dataset.iloc[i].NumRatings,
+            coverImg=dataset.iloc[i].CoverImg,
+            price=dataset.iloc[i].Price,
+        )
+        book.save()
+    return Response("Books are added")
+
+
+@api_view(["GET"])
+@permission_classes([IsAdminUser])
 def resetCategory(request):
     dataset = pd.read_csv("genres.csv")
     Category.objects.all().delete()

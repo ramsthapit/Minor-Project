@@ -5,6 +5,7 @@ urlpatterns = [
     path("", views.getBooks, name="books"),
     path("dashboard/", views.getDashboard, name="dashboard"),
     path("resetCategory/", views.resetCategory, name="resetCategory"),
+    path("resetBook/", views.resetBook, name="resetBook"),
     path("category/", views.getCategory, name="category"),
     path("top/", views.getTopBooks, name="topratedBooks"),
     path("<str:pk>/recommend/", views.recommend, name="recommend"),
