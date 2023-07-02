@@ -8,8 +8,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from base.models import Book, Review
-from base.serializers import BookSerializer
+from base.models import Book, Review, Dashboard
+from base.serializers import BookSerializer, DashboardSerializer
 
 # Create your views here.
 
@@ -267,3 +267,41 @@ def getTopBooks(request):
     books = Book.objects.filter(rating__gte=4).order_by('-rating')[0:5]
     serializer = BookSerializer(books, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+def getDashboard(request):
+    books = Book.objects
+    totalBooks = books.all().count()
+    totalUsers = User.objects.all().count()
+    rating={"ratingFive" : books.filter(rating__gte=4,rating__lte=5).count(),
+    "ratingFour" : books.filter(rating__gte=3,rating__lte=4).count(),
+    "ratingThree" : books.filter(rating__gte=2,rating__lte=3).count(),
+    "ratingTwo" : books.filter(rating__gte=1,rating__lte=2).count(),
+    "ratingOne" : books.filter(rating__gte=0,rating__lte=1).count(),}
+    
+    fiction = books.filter(genres__icontains="fiction").count()
+    young = books.filter(genres__icontains="young").count()
+    fantasy = books.filter(genres__icontains="fantasy").count()
+    magic = books.filter(genres__icontains="magic").count()
+    novels = books.filter(genres__icontains="novels").count()
+    paperback = books.filter(bookForm__icontains="paperback").count()
+    hardcover = books.filter(bookForm__icontains="hardcover").count()
+    kindle = books.filter(bookForm__icontains="kindle").count()
+    mass = books.filter(bookForm__icontains="mass").count()
+    dashboardData={
+        "totalBooks":totalBooks,
+        "totalUsers":totalUsers,
+        "rating": rating,
+        "genres":{"fiction":fiction,"young":young,"fantasy":fantasy,"magic":magic,"novels":novels,},
+        "paperback":paperback,
+        "hardcover":hardcover,
+        "kindle":kindle,
+        "mass":mass,
+    }
+    # dashboard = Dashboard.objects.create(
+    #     totalBooks=totalBooks,totalUsers=totalUsers
+    # )
+    # serializer = DashboardSerializer(dashboard, many=True)
+    # return Response(serializer.data)
+    return Response(dashboardData)

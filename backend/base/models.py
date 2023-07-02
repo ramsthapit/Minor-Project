@@ -56,3 +56,13 @@ class Review(models.Model):
 
     def __str__(self):
         return str(self.rating)
+    
+class Dashboard(models.Model):
+    totalBooks = models.IntegerField(null=True, blank=True, default=0)
+    totalUsers = models.IntegerField(null=True, blank=True, default=0)
+    
+    createdAt = models.DateTimeField(auto_now_add=True)
+    # _id = models.AutoField(primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.rating)

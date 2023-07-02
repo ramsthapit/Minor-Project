@@ -2,7 +2,7 @@ from dataclasses import fields
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Book, Review
+from .models import Book, Review, Dashboard
 
 class UserSerializer(serializers.ModelSerializer):
   name = serializers.SerializerMethodField(read_only=True)
@@ -59,3 +59,8 @@ class BookSerializer(serializers.ModelSerializer):
   
   def get__id(self, obj):
     return obj._id
+  
+class DashboardSerializer(serializers.ModelSerializer):
+  class Meta:
+    model= Dashboard
+    fields='__all__'
